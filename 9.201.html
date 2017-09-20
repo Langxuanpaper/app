@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="js/hammer.js" type="text/javascript" charset="utf-8"></script>
+		
+		<title></title>
+		<style type="text/css">
+			body{
+				margin: 0;
+				overflow: hidden;
+			}
+			.box{
+				width: 100%;
+				height: 100%;
+			}
+			.box ul{
+				width: 400%;
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				transition: all 1s;
+			}
+			.lis li{
+					float: left;
+				}
+			.lis li:nth-child(1){
+				width: 25%;
+				height: 250px;
+				background-color: salmon;
+			}
+			.lis li:nth-child(2){
+				width: 25%;
+				height: 250px;
+				background-color: saddlebrown;
+			}
+			.lis li:nth-child(3){
+				width: 25%;
+				height: 250px;
+				background-color: seagreen;
+			}
+			.lis li:nth-child(4){
+				width: 25%;
+				height: 250px;
+				background-color: skyblue;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<ul class="lis" id="lis">
+				<li>1144</li>
+				<li>2454</li>
+				<li>354</li>
+				<li>44</li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			var n=0
+			var lis=document.getElementById("lis");
+			var list=lis.getElementsByTagName("li");
+			var hiv=new Hammer(lis);
+			flag=true;
+			hiv.on('panleft',function(){
+				if(flag){
+					n++;
+					if(n>=list.length){
+						n=list.length-1;
+					}
+					lis.style.webkitTransform="translate3d(-"+n*25+"%,0,0)";
+					flag=false;
+				}
+			})
+			
+			hiv.on("panright",function(){
+				if(flag){
+					n--;
+					if(n<0){
+						n=0
+					}
+					lis.style.webkitTransform="translate3d(-"+n*25+"%,0,0)";
+					flag=false;
+				}
+			})
+			
+			lis.addEventListener("touchend",function(ev){
+				flag=true;
+			})
+		</script>
+	</body>
+</html>
