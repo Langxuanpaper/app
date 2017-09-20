@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		
+		<title></title>
+		<style type="text/css">
+			.box{
+				width: 150px;
+				height: 100px;
+				background-color: sandybrown;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			
+		</div>
+		<script type="text/javascript">
+//			var b=new Set([333,4,4,56,55,"ss","ss","bb"])
+//			console.log(b)
+//			var c=Array.from(b);
+////			console.log(c)
+//			var arr=[...b]
+//			console.log(arr)
+//			b.add('s');
+			var div=document.querySelector(".box")
+			div.addEventListener("touchstart",function(e){
+				div.innerHTML=e.touches.length
+			})
+			div.addEventListener("touchmove",function(e){
+				div.innerHTML=e.targetTouches.length;
+			})
+			div.addEventListener("touchend",function(e){
+				 console.log(e.changedTouches[0].pageX);
+			})
+		</script>
+	</body>
+</html>
